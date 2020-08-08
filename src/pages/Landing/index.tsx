@@ -17,6 +17,10 @@ const Landing: React.FC = () => {
         navigate('GiveClasses')
     }
 
+    function handleNavigationToStudyPages(){
+        navigate('Study')
+    }
+
     return (
         <View style={styles.container}>
             <Image source={landingImg} style={styles.banner} />
@@ -27,7 +31,9 @@ const Landing: React.FC = () => {
             </Text>
 
             <View style={styles.buttonsContainer}>
-                <RectButton style={[styles.button, styles.buttonsPrimary]}>
+                <RectButton
+                    onPress={handleNavigationToStudyPages}
+                    style={[styles.button, styles.buttonsPrimary]}>
                     <Image source={studyIcon}/>
 
                     <Text style={styles.buttonsText}>
