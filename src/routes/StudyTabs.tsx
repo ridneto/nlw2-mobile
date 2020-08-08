@@ -49,6 +49,7 @@ const StudyTabs: React.FC = () => {
                     }
                 }}
             />
+
             <Screen
                 name="Favorites"
                 component={Favorites}
