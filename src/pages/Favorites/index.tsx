@@ -9,7 +9,7 @@ const Favorites: React.FC = () => {
     return (
         <View style={styles.container}>
             <PageHeader title="Meus proffys favoritos"></PageHeader>
-            <Text> teacher list </Text>
+            <Text> favoritos </Text>
         </ View>
     )
 }
