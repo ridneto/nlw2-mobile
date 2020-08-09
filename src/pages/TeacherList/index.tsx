@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { View, Text, ScrollView, TextInput } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, ScrollView, TextInput, Picker } from 'react-native';
 import { BorderlessButton, RectButton } from 'react-native-gesture-handler';
 import { Feather } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-community/async-storage'
@@ -11,6 +11,7 @@ import api from '../../services/api';
 
 import styles from './styles'
 import { useFocusEffect } from '@react-navigation/native';
+import SubjectsService, { ISubjectItemView } from '../../services/subjectsService';
 
 const TeacherList: React.FC = () => {
     const [ isFiltersVisible, setIsFiltersVisible ] = useState(false);
@@ -20,6 +21,8 @@ const TeacherList: React.FC = () => {
     const [subject, setSubject] = useState('');
     const [week_day, setWeekDay] = useState('');
     const [time, setTime] = useState('');
+
+    const [ subjectsLis, setSubjectsList ] = useState<ISubjectItemView[]>([])
 
     function loadFavorites(){
         AsyncStorage.getItem('favorites').then(response => {
@@ -34,6 +37,17 @@ const TeacherList: React.FC = () => {
             }
         });
     }
+
+    async function loadSubjects(){
+        const subjectsService = new SubjectsService()
+        const data = await subjectsService.getSubjectsParsedAsItemView()
+
+        setSubjectsList(data)
+    }
+
+    useEffect(() => {
+        loadSubjects();
+    }, [])
 
     useFocusEffect(() => {
         loadFavorites();
@@ -69,26 +83,54 @@ const TeacherList: React.FC = () => {
                 )}>
                 { isFiltersVisible && (
                     <View style={styles.searchForm}>
+
                         <Text style={styles.label}> Matéria </Text>
-                        <TextInput
-                            value={subject}
-                            onChangeText={text => setSubject(text)}
-                            style={styles.input}
-                            placeholderTextColor='#c1bccc'
-                            placeholder="Qual a matéria?"
-                        />
+
+                        <Picker
+                            selectedValue={subject}
+                            style={ {
+                                backgroundColor: '#fff',
+                                borderRadius: 8,
+                                marginBottom: 16,
+                                marginTop: 4
+                            } }
+                            onValueChange={item => setSubject(item)}
+                        >
+                            {subjectsLis.map(item => {
+                                return (
+                                    <Picker.Item
+                                        key={item.value}
+                                        value={item.value}
+                                        label={item.label}
+                                    />
+                                )
+                            })}
+                        </Picker>
 
                         <View style={styles.inputGroup}>
                             <View style={styles.inputBlock}>
                                 <Text style={styles.label}> Dia da semana </Text>
 
-                                <TextInput
-                                    value={week_day}
-                                    onChangeText={text => setWeekDay(text)}
-                                    style={styles.input}
-                                    placeholderTextColor='#c1bccc'
-                                    placeholder="Qual o dia?"
-                                />
+                                <Picker
+                                    selectedValue={week_day}
+                                    style={
+                                        {
+                                            backgroundColor: '#fff',
+                                            borderRadius: 8,
+                                            marginBottom: 16,
+                                            marginTop: 4
+                                        }
+                                    }
+                                    onValueChange={item => setWeekDay(item)}
+                                >
+                                    <Picker.Item value="0" label="Domingo"/>
+                                    <Picker.Item value="1" label="Segunda-feira" />
+                                    <Picker.Item value="2" label="Terça-feira" />
+                                    <Picker.Item value="3" label="Quarta-feira" />
+                                    <Picker.Item value="4" label="Quinta-feira" />
+                                    <Picker.Item value="5" label="Sexta-feira" />
+                                    <Picker.Item value="6" label="Sábado" />
+                                </Picker>
                             </View>
 
                             <View style={styles.inputBlock}>
