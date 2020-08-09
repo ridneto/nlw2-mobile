@@ -37,4 +37,4 @@ Tela favoritos
 
 Modulo de cadastro aula. f
 
-<img src="./.github/register-proffy.png" />
+<img src="./.github/register-proffy.jpeg" />
