@@ -51,6 +51,21 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontFamily: 'Archivo_700Bold',
         fontSize: 16
+    },
+
+    selectedView: {
+        borderRadius: 8,
+        borderWidth: 1,
+        borderColor: '#fff',
+        overflow: 'hidden',
+        marginBottom: 16,
+        marginTop: 4,
+        height: 54,
+    },
+
+    selectedPicker: {
+        height: 54,
+        backgroundColor: '#fff'
     }
 })
 
