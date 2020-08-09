@@ -92,7 +92,7 @@ const TeacherList: React.FC = () => {
                                 style={styles.selectedPicker}
                                 onValueChange={item => setSubject(item)}
                             >
-                                <Picker.Item value="" label="Escolha a matéria"/>
+                                <Picker.Item value="" label="Qual matéria?"/>
                                 {subjectsLis.map(item => {
                                     return (
                                         <Picker.Item
@@ -115,7 +115,7 @@ const TeacherList: React.FC = () => {
                                         style={styles.selectedPicker}
                                         onValueChange={item => setWeekDay(item)}
                                     >
-                                        <Picker.Item value="" label="Escolha o dia"/>
+                                        <Picker.Item value="" label="Qual dia?"/>
                                         <Picker.Item value="0" label="Domingo"/>
                                         <Picker.Item value="1" label="Segunda-feira" />
                                         <Picker.Item value="2" label="Terça-feira" />
