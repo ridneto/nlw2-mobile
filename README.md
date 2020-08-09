@@ -20,3 +20,21 @@ $ yarn start
 Após isso, leia o QRCode com o app expo ou rode no emulador.
 
 Importante que tenha o <a target="_blank" href="https://github.com/ridneto/nlw2-mobile">backend</a> rodando na máquina.
+
+Tela entrada 
+
+<img src="./.github/welcome-page.jpeg" />
+
+Tela consulta aulas
+
+<img src="./.github/search-classes-filter.jpeg" />
+<img src="./.github/classes-1.jpeg" />
+<img src="./.github/classes-2.jpeg" />
+
+Tela favoritos
+
+<img src="./.github/favorites.jpeg" />
+
+Modulo de cadastro aula. f
+
+<img src="./.github/register-proffy.png" />
