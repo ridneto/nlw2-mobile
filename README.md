@@ -15,8 +15,6 @@ $ yarn install
 
 # Execute a aplicação a aplicação
 $ yarn start
-
-#Por padrão, a aplicação irá rodar na porta 3333
 ```
 
 Após isso, leia o QRCode com o app expo ou rode no emulador.
